@@ -1,0 +1,50 @@
+cmake_minimum_required(VERSION 3.3)
+
+PROJECT("pv-datetime-filter")
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/CMake/")
+
+#if you build this filter as part of a program that already includes VTK, you have to link against paraview OR VTK, but not both.
+
+#include addition findXXX.cmake files
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMake/")
+
+
+option(PV_FILTER "Build Paraview time filter" ON)
+
+if(PV_FILTER)
+    FIND_PACKAGE(ParaView REQUIRED)
+    INCLUDE(${PARAVIEW_USE_FILE})
+else()
+    find_package(VTK REQUIRED)
+    include(${VTK_USE_FILE})
+endif()
+
+INCLUDE_DIRECTORIES(
+  "${PROJECT_SOURCE_DIR}"
+  "${PROJECT_BINARY_DIR}"
+)
+
+find_package(Boost
+             1.54.0
+             COMPONENTS
+             date_time
+             REQUIRED)
+
+include_directories(${BOOST_INCLUDE_PATH})
+
+SET(PLUGIN_NAME TimeAnnotate)
+
+ADD_PARAVIEW_PLUGIN(
+  ${PLUGIN_NAME}
+  "1.0" 
+  SERVER_MANAGER_XML
+    vtkDateTimeAnnotation.xml
+  SERVER_MANAGER_SOURCES
+    vtkDateTimeAnnotation.cxx
+#  SERVER_SOURCES
+#    Extra-sources.cpp
+)
+
+TARGET_LINK_LIBRARIES(${PLUGIN_NAME}) #other link here as required
+

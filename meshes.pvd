@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VTKFile type="Collection" version="0.1">
+    <Collection>
+        <DataSet timestep="1285977600" group="" part="0" file="file0.vtu"/>
+        <DataSet timestep="1285981200" group="" part="0" file="file1.vtu"/>
+        <DataSet timestep="1285984800" group="" part="0" file="file2.vtu"/>
+
+    </Collection>
+</VTKFile>
