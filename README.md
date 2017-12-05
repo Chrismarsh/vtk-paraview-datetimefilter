@@ -1,5 +1,5 @@
 # vtk-paraview-datetimefilter
-Example of how to show date-time information in Paraview 
+Paraview filter to show date-time information for a timeseries of vtu data.
 
 This is based off code from John Biddiscombe [1], as well as the Time Annotate filter that ships with Paraview.
 
@@ -8,18 +8,11 @@ I have modified this code to:
 - support POSIX time via boost::ptime
 - support output format as YYYY/MM/DD HH:MM:SS
 
-To build this example, you need to follow the guide for building Paraview from source [2] and to install plugins [3].
+To build this example, you need to follow the guide for building Paraview from source [2] and to install plugins [3]. On MacOS you may need to follow [4] to help cmake find qt5.
 
-When you compile Paraview, you need to move the ParaViewConfig.cmake file from the root to the /CMake folder. I have included the one that generated from my install. Lines 15,16,17 need to be mofified accordingly.
+After you compile Paraview, you need to move the ParaViewConfig.cmake file from the root of the build directory to the CMake folder. I have included the one that generated from my install as an example.
 
-The last piece of the puzzle is that output meshes have to be wrapped in a pvd file with the timestamp=".." attribute set to a POSIX time. For a current ```boost::posix_time::ptime time current_date```, then the following code will convert a ptime to a POSIX time.
-
-```
-  const boost::posix_time::ptime epoch = boost::posix_time::from_time_t(0);
-    boost::posix_time::time_duration duration = current_date - epoch;
-    return duration.total_seconds();
-
-```
+The last piece of the puzzle is that output meshes have to be wrapped in a pvd file with the timestamp=".." attribute set to a POSIX time. 
 
 ![](output.gif)
 
@@ -29,3 +22,4 @@ The last piece of the puzzle is that output meshes have to be wrapped in a pvd f
 
 [3] http://www.paraview.org/Wiki/ParaView/Plugin_HowTo#Using_Plugins
 
+[4] https://github.com/Cockatrice/Cockatrice/issues/205#issuecomment-183087315

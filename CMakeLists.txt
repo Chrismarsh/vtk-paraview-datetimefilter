@@ -9,16 +9,9 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/CMake/")
 #include addition findXXX.cmake files
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMake/")
 
+FIND_PACKAGE(ParaView REQUIRED)
+INCLUDE(${PARAVIEW_USE_FILE})
 
-option(PV_FILTER "Build Paraview time filter" ON)
-
-if(PV_FILTER)
-    FIND_PACKAGE(ParaView REQUIRED)
-    INCLUDE(${PARAVIEW_USE_FILE})
-else()
-    find_package(VTK REQUIRED)
-    include(${VTK_USE_FILE})
-endif()
 
 INCLUDE_DIRECTORIES(
   "${PROJECT_SOURCE_DIR}"
@@ -31,7 +24,7 @@ find_package(Boost
              date_time
              REQUIRED)
 
-include_directories(${BOOST_INCLUDE_PATH})
+include_directories(${BOOST_INCLUDE_PATH} ${Boost_INCLUDE_DIR})  #new and old format for incl dir path
 
 SET(PLUGIN_NAME TimeAnnotate)
 
