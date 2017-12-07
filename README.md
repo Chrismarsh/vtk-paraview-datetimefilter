@@ -10,7 +10,7 @@ I have modified this code to:
 
 To build this example, you need to follow the guide for building Paraview from source [2] and to install plugins [3]. On MacOS you may need to follow [4] to help cmake find qt5.
 
-After you compile Paraview, you need to move the ParaViewConfig.cmake file from the root of the build directory to the CMake folder. I have included the one that generated from my install as an example.
+After you compile Paraview, you need to set ParaView_DIR in CMakeLists.txt to the root directory.
 
 The last piece of the puzzle is that output meshes have to be wrapped in a pvd file with the timestamp=".." attribute set to a POSIX time. 
 

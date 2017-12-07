@@ -2,12 +2,8 @@ cmake_minimum_required(VERSION 3.3)
 
 PROJECT("pv-datetime-filter")
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${PROJECT_SOURCE_DIR}/CMake/")
+set(ParaView_DIR "/Users/chris/Documents/PhD/code/paraview")
 
-#if you build this filter as part of a program that already includes VTK, you have to link against paraview OR VTK, but not both.
-
-#include addition findXXX.cmake files
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMake/")
 
 FIND_PACKAGE(ParaView REQUIRED)
 INCLUDE(${PARAVIEW_USE_FILE})
