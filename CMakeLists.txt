@@ -2,6 +2,12 @@ cmake_minimum_required(VERSION 3.3)
 
 PROJECT("pv-datetime-filter")
 
+<<<<<<< Updated upstream
+=======
+#set(ParaView_DIR /Users/chris/Documents/PhD/code/CHM/cmake-build-release/lib/ParaView-prefix/src/ParaView-build)
+set(CMAKE_PREFIX_PATH /usr/local/opt/qt)
+
+>>>>>>> Stashed changes
 FIND_PACKAGE(ParaView REQUIRED)
 INCLUDE(${PARAVIEW_USE_FILE})
 
