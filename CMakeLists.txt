@@ -2,9 +2,6 @@ cmake_minimum_required(VERSION 3.3)
 
 PROJECT("pv-datetime-filter")
 
-set(ParaView_DIR "/Users/chris/Documents/PhD/code/paraview")
-
-
 FIND_PACKAGE(ParaView REQUIRED)
 INCLUDE(${PARAVIEW_USE_FILE})
 
