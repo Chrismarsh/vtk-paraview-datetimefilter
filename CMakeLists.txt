@@ -2,9 +2,6 @@ cmake_minimum_required(VERSION 3.3)
 
 PROJECT("pv-datetime-filter")
 
-
-set(ParaView_DIR "")
-
 message(STATUS ${ParaView_DIR})
 message(STATUS ${CMAKE_PREFIX_PATH})
 
@@ -41,4 +38,4 @@ ADD_PARAVIEW_PLUGIN(
 
 TARGET_LINK_LIBRARIES(${PLUGIN_NAME}) #other link here as required
 
-install (TARGETS ${PLUGIN_NAME} DESTINATION bin)
+install (TARGETS ${PLUGIN_NAME} DESTINATION "lib")
