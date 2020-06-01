@@ -7,7 +7,9 @@ message(STATUS ${CMAKE_PREFIX_PATH})
 
 
 FIND_PACKAGE(ParaView REQUIRED)
+message(STATUS "usefile = ${PARAVIEW_USE_FILE}")
 INCLUDE(${PARAVIEW_USE_FILE})
+
 
 
 INCLUDE_DIRECTORIES(
@@ -16,7 +18,6 @@ INCLUDE_DIRECTORIES(
 )
 
 find_package(Boost
-             1.54.0
              COMPONENTS
              date_time
              REQUIRED)
@@ -36,6 +37,6 @@ ADD_PARAVIEW_PLUGIN(
 #    Extra-sources.cpp
 )
 
-TARGET_LINK_LIBRARIES(${PLUGIN_NAME}) #other link here as required
+TARGET_LINK_LIBRARIES( Boost::Boost) #other link here as required
 
 install (TARGETS ${PLUGIN_NAME} DESTINATION "lib")
