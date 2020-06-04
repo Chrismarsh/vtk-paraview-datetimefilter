@@ -1,6 +1,16 @@
 # vtk-paraview-datetimefilter
 Paraview filter to show date-time information for a timeseries of vtu data.
 
+XML plugin
+===========
+
+With the API changes in Paraview 5.7+, this no longer compiles for Paraview >= 5.7. I'm am transitioning to a Python-based version. In the mean time, I've modified the built in XML+Python NetCDF time file to work with the below-described pvd file format.
+
+This plugin is `AnnotateDateTime.xml` and can be added loaded as plugi. Just load the xml file directly. This works with the pre-built Paraview binaries available from Paraview.org. 
+
+
+C++ plugin
+==========
 This is based off code from John Biddiscombe [1], as well as the Time Annotate filter that ships with Paraview.
 
 I have modified this code to:
